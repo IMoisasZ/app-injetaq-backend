@@ -1,0 +1,29 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "app-injetaq-backend",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/IMoisasZ/app-injetaq-web.git"
+	},
+	"author": "moisas",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/IMoisasZ/app-injetaq-web/issues"
+	},
+	"homepage": "https://github.com/IMoisasZ/app-injetaq-web#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.2",
+		"express": "^4.18.1",
+		"mysql2": "^2.3.3",
+		"sequelize": "^6.23.2",
+		"winston": "^3.8.2"
+	}
+}
