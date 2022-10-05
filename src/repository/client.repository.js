@@ -40,7 +40,6 @@ async function getClient(id) {
 
 async function disableEnableClient(id, actived) {
 	try {
-		console.log(actived)
 		await ClientModel.update(
 			{
 				actived,
