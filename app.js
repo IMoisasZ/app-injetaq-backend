@@ -4,6 +4,8 @@ import winston from 'winston'
 
 // routes import
 import ClientRoute from './src/router/client.route.js'
+import SectorRoute from './src/router/sector.route.js'
+
 // create variable app
 const app = express()
 
@@ -15,7 +17,7 @@ app.use(express.json())
 
 // set routes
 app.use('/client', ClientRoute)
-
+app.use('/sector', SectorRoute)
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format
 const myformat = printf(({ level, message, label, timestamp }) => {

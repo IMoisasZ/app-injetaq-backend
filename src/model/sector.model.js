@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
 
-const Client = DBCONNECTION.define(
-	'client',
+const Sector = DBCONNECTION.define(
+	'sector',
 	{
 		id: {
 			type: Sequelize.INTEGER,
@@ -19,7 +19,8 @@ const Client = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tableName: 'client' }
+	{ tableName: 'sector' }
 )
-export default Client
-Client.sync()
+
+export default Sector
+Sector.sync()
