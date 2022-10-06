@@ -14,7 +14,6 @@ async function createClient(req, res, next) {
 }
 
 async function updateClient(req, res, next) {
-	console.log(req.body)
 	try {
 		const client = req.body
 		if (!client.description)

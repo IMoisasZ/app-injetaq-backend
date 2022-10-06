@@ -30,6 +30,18 @@ async function getSectors() {
 	}
 }
 
+async function getSectorsActived() {
+	try {
+		return await SectorModel.findAll({
+			where: {
+				actived: true,
+			},
+		})
+	} catch (error) {
+		throw error
+	}
+}
+
 async function getSector(id) {
 	try {
 		return await SectorModel.findByPk(id)
@@ -61,5 +73,6 @@ export default {
 	updateSector,
 	getSectors,
 	getSector,
+	getSectorsActived,
 	disableEnableSector,
 }
