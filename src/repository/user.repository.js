@@ -9,8 +9,7 @@ async function createUser(user) {
 	}
 }
 
-async function updateUser(user) {
-	const { id, name, lastName, email, role } = user
+async function updateUser(id, name, lastName, email, role, actived) {
 	try {
 		await UserModel.update(
 			{
@@ -18,6 +17,7 @@ async function updateUser(user) {
 				lastName,
 				email,
 				role,
+				actived,
 			},
 			{
 				where: {

@@ -18,10 +18,18 @@ async function createUser(user) {
 }
 
 async function updateUser(user) {
+	const { id, name, lastName, email, role, actived } = user
 	try {
-		user.name = user.name.toUpperCase()
-		user.lastName = user.lastName.toUpperCase()
-		return await UserRepository.updateUser(user)
+		name = name.toUpperCase()
+		lastName = lastName.toUpperCase()
+		return await UserRepository.updateUser(
+			id,
+			name,
+			lastName,
+			email,
+			role,
+			actived
+		)
 	} catch (error) {
 		throw error
 	}
