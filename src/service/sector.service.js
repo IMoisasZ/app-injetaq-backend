@@ -18,9 +18,14 @@ async function updateSector(sector) {
 	}
 }
 
-async function getSectors() {
+async function getSectors(actived) {
+	console.log(actived, 'service')
 	try {
-		return await SectorRepository.getSectors()
+		if (actived === undefined) {
+			return await SectorRepository.getSectors()
+		} else {
+			return await SectorRepository.getSectorsActived()
+		}
 	} catch (error) {
 		throw error
 	}

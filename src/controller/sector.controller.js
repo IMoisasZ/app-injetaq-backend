@@ -26,8 +26,15 @@ async function updateSector(req, res, next) {
 
 async function getSectors(req, res, next) {
 	try {
-		res.send(await SectorService.getSectors())
-		logger.info(`GET - /sector - ALL SECTORS`)
+		const { actived } = req.query
+		console.log(actived, 'query')
+		if (!actived) {
+			res.send(await SectorService.getSectors())
+			logger.info(`GET - /sector - ALL SECTORS`)
+		} else {
+			res.send(await SectorService.getSectors(actived))
+			logger.info(`GET - /sector - ALL SECTORS`)
+		}
 	} catch (error) {
 		next(error)
 	}
