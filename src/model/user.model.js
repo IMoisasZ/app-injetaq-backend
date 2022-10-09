@@ -34,7 +34,7 @@ const User = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tabelName: 'user' }
+	{ tableName: 'user' },
 )
 
 export default User
