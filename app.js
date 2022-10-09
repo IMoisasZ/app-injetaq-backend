@@ -9,6 +9,7 @@ import OperationRoute from './src/router/operation.route.js'
 import UserRoute from './src/router/user.route.js'
 import MaterialRoute from './src/router/material.route.js'
 import DIRoute from './src/router/di.route.js'
+import DIHoursRoute from './src/router/di.hours.route.js'
 
 // create variable app
 const app = express()
@@ -38,6 +39,7 @@ app.use('/operation', OperationRoute)
 app.use('/user', UserRoute)
 app.use('/material', MaterialRoute)
 app.use('/di', DIRoute)
+app.use('/di_hours', DIHoursRoute)
 
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format
