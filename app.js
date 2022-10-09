@@ -7,6 +7,7 @@ import ClientRoute from './src/router/client.route.js'
 import SectorRoute from './src/router/sector.route.js'
 import OperationRoute from './src/router/operation.route.js'
 import UserRoute from './src/router/user.route.js'
+import MaterialRoute from './src/router/material.route.js'
 
 // create variable app
 const app = express()
@@ -34,6 +35,7 @@ app.use('/client', ClientRoute)
 app.use('/sector', SectorRoute)
 app.use('/operation', OperationRoute)
 app.use('/user', UserRoute)
+app.use('/material', MaterialRoute)
 
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format
