@@ -3,23 +3,26 @@ import UserService from '../service/user.service.js'
 async function createUser(req, res, next) {
 	try {
 		const user = req.body
+
 		if (!user.name)
-			res.status(400).json({ error: 'O nome deve ser informado!' })
+			return res.status(400).json({ error: 'O nome deve ser informado!' })
 		if (!user.lastName)
-			res.status(400).json({ error: 'O sobrenome deve ser informado!' })
+			return res.status(400).json({ error: 'O sobrenome deve ser informado!' })
 		if (!user.email)
-			res.status(400).json({ error: 'O email deve ser informado!' })
+			return res.status(400).json({ error: 'O email deve ser informado!' })
 		if (!user.role)
-			res.status(400).json({ error: 'O tipo de perfil deve ser informado!' })
+			return res
+				.status(400)
+				.json({ error: 'O tipo de perfil deve ser informado!' })
 		if (!user.password)
-			res.status(400).json({ error: 'A senha deve ser informada' })
+			return res.status(400).json({ error: 'A senha deve ser informada' })
 		if (!user.confirmPassword)
-			res
+			return res
 				.status(400)
 				.json({ error: 'A confirmação da senha deve ser informada!' })
 
-		res.send(await UserService.createUser(user))
 		logger.info(`POST - /user - ${JSON.stringify(user)}`)
+		return res.send(await UserService.createUser(user))
 	} catch (error) {
 		next(error)
 	}
@@ -65,8 +68,8 @@ async function updateChangePasswordUser(req, res, next) {
 			await UserService.updateChangePasswordUser(
 				email,
 				password,
-				confirmPassword
-			)
+				confirmPassword,
+			),
 		)
 		logger.info(`PATCH - /user - ${JSON.stringify(req.body)}`)
 	} catch (error) {
