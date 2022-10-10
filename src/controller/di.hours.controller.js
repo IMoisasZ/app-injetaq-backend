@@ -3,6 +3,7 @@ import DIHoursService from '../service/di.hours.service.js'
 async function includeDIHours(req, res, next) {
 	try {
 		const di_hours = req.body
+		console.debug('controller', di_hours)
 		if (!di_hours.operation_id)
 			res.status(400).json({ error: 'A operação deve ser informada!' })
 		if (!di_hours.quantity)

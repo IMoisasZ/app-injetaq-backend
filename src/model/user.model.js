@@ -34,9 +34,7 @@ const User = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tableName: 'user' },
+	{ tableName: 'user' }
 )
 
 export default User
-
-User.sync()

@@ -1,5 +1,7 @@
 import DIModel from '../model/di.model.js'
 import ClientModel from '../model/client.model.js'
+import DIHoursModel from '../model/di.hours.model.js'
+import OperationModel from '../model/operation.model.js'
 
 async function createDI(di) {
 	try {
@@ -30,6 +32,14 @@ async function getAllDI() {
 				{
 					model: ClientModel,
 				},
+				{
+					model: DIHoursModel,
+					include: [
+						{
+							model: OperationModel,
+						},
+					],
+				},
 			],
 		})
 	} catch (error) {
@@ -43,6 +53,14 @@ async function getDI(id) {
 			include: [
 				{
 					model: ClientModel,
+				},
+				{
+					model: DIHoursModel,
+					include: [
+						{
+							model: OperationModel,
+						},
+					],
 				},
 			],
 		})
@@ -61,7 +79,7 @@ async function changeStatusDI(id, status) {
 				where: {
 					id,
 				},
-			},
+			}
 		)
 		return await getDI(id)
 	} catch (error) {

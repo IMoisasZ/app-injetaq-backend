@@ -1,9 +1,9 @@
 import Sequelize from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
-import OperationModel from './operation.model.js'
+import MaterialModel from './material.model.js'
 
-const DIHours = DBCONNECTION.define(
-	'di_hours',
+const DIMaterial = DBCONNECTION.define(
+	'di_material',
 	{
 		id: {
 			type: Sequelize.INTEGER,
@@ -14,7 +14,7 @@ const DIHours = DBCONNECTION.define(
 			type: Sequelize.INTEGER,
 			allowNull: false,
 		},
-		operation_id: {
+		material_id: {
 			type: Sequelize.INTEGER,
 			allowNull: false,
 		},
@@ -27,11 +27,11 @@ const DIHours = DBCONNECTION.define(
 			allowNull: false,
 		},
 	},
-	{ tableName: 'di_hours' }
+	{ tableName: 'di_material' }
 )
 
-export default DIHours
+export default DIMaterial
 
-DIHours.sync()
+DIMaterial.sync()
 
-DIHours.belongsTo(OperationModel, { foreignKey: 'operation_id' })
+DIMaterial.belongsTo(MaterialModel, { foreignKey: 'material_id' })

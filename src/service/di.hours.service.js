@@ -2,6 +2,7 @@ import DIHoursRepository from '../repository/di.hours.repsitory.js'
 
 async function includeDIHours(di_hours) {
 	try {
+		console.debug('service', di_hours)
 		return await DIHoursRepository.includeDIHours(di_hours)
 	} catch (error) {
 		throw error

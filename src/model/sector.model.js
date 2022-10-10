@@ -23,4 +23,5 @@ const Sector = DBCONNECTION.define(
 )
 
 export default Sector
+
 Sector.sync()
