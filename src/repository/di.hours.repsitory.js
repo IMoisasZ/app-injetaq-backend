@@ -32,9 +32,9 @@ async function getAllDIHours(di_id) {
 				{
 					model: OperationModel,
 				},
-				{
-					model: DIModel,
-				},
+				// {
+				// 	model: DIModel,
+				// },
 			],
 			where: {
 				di_id,
@@ -52,9 +52,9 @@ async function getDIHours(id) {
 				{
 					model: OperationModel,
 				},
-				{
-					model: DIModel,
-				},
+				// {
+				// 	model: DIModel,
+				// },
 			],
 		})
 	} catch (error) {

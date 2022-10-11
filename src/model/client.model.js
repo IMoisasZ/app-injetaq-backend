@@ -19,7 +19,8 @@ const Client = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tableName: 'client' }
+	{ tableName: 'client' },
 )
 export default Client
+
 Client.sync()

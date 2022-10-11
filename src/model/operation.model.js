@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
-import SectorModel from '../model/sector.model.js'
 
 const Operation = DBCONNECTION.define(
 	'operation',
@@ -24,11 +23,13 @@ const Operation = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tableName: 'operation' }
+	{ tableName: 'operation' },
 )
 
 export default Operation
 
-Operation.sync()
+Operation.sync({ alter: true })
 
-Operation.belongsTo(SectorModel, { foreignKey: 'sector_id' })
+Operation.associate = (models) => {
+	Operation.belongsTo(models.Sector, { foreignKey: 'sector_id' })
+}

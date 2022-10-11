@@ -1,6 +1,7 @@
 import Sequelize, { INTEGER } from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
-import CLientModel from './client.model.js'
+import ClientModel from './client.model.js'
+import DIHoursModel from './di.hours.model.js'
 
 const DI = DBCONNECTION.define(
 	'di',
@@ -68,4 +69,5 @@ export default DI
 
 DI.sync()
 
-DI.belongsTo(CLientModel, { foreignKey: 'client_id' })
+DI.belongsTo(ClientModel, { foreignKey: 'client_id' })
+DI.belongsTo(DIHoursModel)

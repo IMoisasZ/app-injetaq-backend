@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
-import OperationModel from './operation.model.js'
 import DIModel from './di.model.js'
+import OperationModel from './operation.model.js'
 
 const DIHours = DBCONNECTION.define(
 	'di_hours',
@@ -36,4 +36,4 @@ export default DIHours
 DIHours.sync()
 
 DIHours.belongsTo(OperationModel, { foreignKey: 'operation_id' })
-DIHours.belongsTo(DIModel, { foreignKey: 'di_id' })
+DIHours.hasMany(DIModel, { foreignKey: 'di_id', as: 'di_' })

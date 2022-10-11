@@ -19,8 +19,9 @@ const Sector = DBCONNECTION.define(
 			defaultValue: true,
 		},
 	},
-	{ tableName: 'sector' }
+	{ tableName: 'sector' },
 )
 
 export default Sector
+
 Sector.sync()
