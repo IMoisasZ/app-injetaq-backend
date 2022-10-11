@@ -4,7 +4,6 @@ import SectorModel from '../model/sector.model.js'
 async function createOperation(operation) {
 	try {
 		const newOperation = await OperationModel.create(operation)
-		console.log(newOperation)
 		return await getOperation(newOperation.id)
 	} catch (error) {
 		throw error

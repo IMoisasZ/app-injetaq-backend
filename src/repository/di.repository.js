@@ -1,7 +1,9 @@
 import DIModel from '../model/di.model.js'
 import ClientModel from '../model/client.model.js'
 import DIHoursModel from '../model/di.hours.model.js'
+import DIMaterial from '../model/di.material.model.js'
 import OperationModel from '../model/operation.model.js'
+import MaterialModel from '../model/material.model.js'
 
 async function createDI(di) {
 	try {
@@ -34,6 +36,19 @@ async function getAllDI() {
 				},
 				{
 					model: DIHoursModel,
+					include: [
+						{
+							model: OperationModel,
+						},
+					],
+				},
+				{
+					model: DIMaterial,
+					include: [
+						{
+							model: MaterialModel,
+						},
+					],
 				},
 			],
 		})
@@ -48,6 +63,22 @@ async function getDI(id) {
 			include: [
 				{
 					model: ClientModel,
+				},
+				{
+					model: DIHoursModel,
+					include: [
+						{
+							model: OperationModel,
+						},
+					],
+				},
+				{
+					model: DIMaterial,
+					include: [
+						{
+							model: MaterialModel,
+						},
+					],
 				},
 			],
 		})

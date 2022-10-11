@@ -1,12 +1,14 @@
 import DIHoursModel from '../model/di.hours.model.js'
-import DIModel from '../model/di.model.js'
 import OperationModel from '../model/operation.model.js'
+import DIModel from '../model/di.model.js'
 
 async function includeDIHours(di_hours) {
+	console.debug('repository', di_hours)
 	try {
 		const newDIHours = await DIHoursModel.create(di_hours)
 		return await getDIHours(newDIHours.id)
 	} catch (error) {
+		console.log({ error })
 		throw error
 	}
 }
@@ -25,16 +27,12 @@ async function updateDIHours(di_hours) {
 }
 
 async function getAllDIHours(di_id) {
-	console.debug('respository', di_id)
 	try {
 		return await DIHoursModel.findAll({
 			include: [
 				{
 					model: OperationModel,
 				},
-				// {
-				// 	model: DIModel,
-				// },
 			],
 			where: {
 				di_id,
@@ -52,9 +50,6 @@ async function getDIHours(id) {
 				{
 					model: OperationModel,
 				},
-				// {
-				// 	model: DIModel,
-				// },
 			],
 		})
 	} catch (error) {

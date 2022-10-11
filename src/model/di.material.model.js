@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize'
 import DBCONNECTION from '../connection/db.connection.js'
 import MaterialModel from './material.model.js'
-import DI from './di.model.js'
 
 const DIMaterial = DBCONNECTION.define(
 	'di_material',
@@ -11,7 +10,7 @@ const DIMaterial = DBCONNECTION.define(
 			autoIncrement: true,
 			primaryKey: true,
 		},
-		di: {
+		di_id: {
 			type: Sequelize.INTEGER,
 			allowNull: false,
 		},
@@ -20,11 +19,11 @@ const DIMaterial = DBCONNECTION.define(
 			allowNull: false,
 		},
 		quantity: {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DECIMAL(10, 4),
 			allowNull: false,
 		},
 		price: {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DECIMAL(10, 4),
 			allowNull: false,
 		},
 	},
@@ -36,4 +35,3 @@ export default DIMaterial
 DIMaterial.sync()
 
 DIMaterial.belongsTo(MaterialModel, { foreignKey: 'material_id' })
-DIMaterial.belongsTo(DI, { foreignKey: 'di' })
