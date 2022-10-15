@@ -12,6 +12,7 @@ import DIRoute from './src/router/di.route.js';
 import DIHoursRoute from './src/router/di.hours.route.js';
 import DIMaterialRoute from './src/router/di.material.route.js';
 import EmployeeRoute from './src/router/employee.route.js';
+import MachineRoute from './src/router/machine.route.js';
 
 // create variable app
 const app = express();
@@ -44,6 +45,7 @@ app.use('/di', DIRoute);
 app.use('/di_hours', DIHoursRoute);
 app.use('/di_material', DIMaterialRoute);
 app.use('/employee', EmployeeRoute);
+app.use('/machine', MachineRoute);
 
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format;
