@@ -34,7 +34,6 @@ async function updateDIHours(req, res, next) {
 }
 
 async function getAllDIHours(req, res, next) {
-	console.debug('controller', req.params.di_id)
 	try {
 		res.send(await DIHoursService.getAllDIHours(req.params.di_id))
 		logger.info(`GET - /di_hours/${JSON.stringify(req.params.di_id)}`)

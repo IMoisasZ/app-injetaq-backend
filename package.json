@@ -26,5 +26,8 @@
 		"mysql2": "^2.3.3",
 		"sequelize": "^6.23.2",
 		"winston": "^3.8.2"
+	},
+	"devDependencies": {
+		"prettier": "2.7.1"
 	}
 }

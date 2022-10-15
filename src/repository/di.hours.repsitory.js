@@ -1,6 +1,7 @@
 import DIHoursModel from '../model/di.hours.model.js'
 import OperationModel from '../model/operation.model.js'
 import DIModel from '../model/di.model.js'
+import sequelize from 'sequelize'
 
 async function includeDIHours(di_hours) {
 	console.debug('repository', di_hours)

@@ -1,5 +1,6 @@
 import DIMaterialModel from '../model/di.material.model.js'
 import MaterialModel from '../model/material.model.js'
+import sequelize from 'sequelize'
 
 async function includeDIMaterial(di_material) {
 	try {
@@ -40,6 +41,26 @@ async function getAllDIMaterial(di_id) {
 	}
 }
 
+async function sumByMaterial(di_id) {
+	const totalMaterial = await DIMaterialModel.findAll({
+		where: {
+			di_id,
+		},
+		include:[
+			{
+				model: MaterialModel
+			}
+		],
+		attributes: [
+			'di_id',
+			'material_id',
+			[sequelize.fn('sum', sequelize.col('total')), 'total_material'],
+		],
+		group:['material_id']
+	})
+	return totalMaterial
+}
+
 async function getDIMaterial(id) {
 	try {
 		return await DIMaterialModel.findByPk(id, {
@@ -72,5 +93,6 @@ export default {
 	updateDIMaterial,
 	getAllDIMaterial,
 	getDIMaterial,
+	sumByMaterial,
 	deleteDIMaterial,
 }

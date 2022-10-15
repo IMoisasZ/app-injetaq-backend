@@ -14,15 +14,15 @@ const DIMaterial = DBCONNECTION.define(
 			type: Sequelize.INTEGER,
 			allowNull: false,
 		},
+		description: {
+			type: Sequelize.STRING,
+			allowNull: true,
+		},
 		material_id: {
 			type: Sequelize.INTEGER,
 			allowNull: false,
 		},
-		quantity: {
-			type: Sequelize.DECIMAL(10, 4),
-			allowNull: false,
-		},
-		price: {
+		total: {
 			type: Sequelize.DECIMAL(10, 4),
 			allowNull: false,
 		},

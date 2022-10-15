@@ -22,6 +22,5 @@ const Sector = DBCONNECTION.define(
 	{ tableName: 'sector' },
 )
 
-export default Sector
-
 Sector.sync()
+export default Sector
