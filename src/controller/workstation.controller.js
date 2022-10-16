@@ -58,10 +58,60 @@ async function disableEnableWorkstation(req, res, next) {
   }
 }
 
+// ----------------------------connectio to operation------------------------------
+async function createConnectionWorkstationOperation(req, res, next) {
+  try {
+    const connection = req.body;
+    if (!connection.workstation_id)
+      res.status(400).json({ error: 'O posto deve ser informado!' });
+    if (!connection.operation_id)
+      res.status(400).json({ error: 'A operação deve ser informada!' });
+
+    res.send(
+      await WorkstationService.createConnectionWorkstationOperation(connection)
+    );
+    logger.info(
+      `POST - /wokstation/connectionToOperation - ${JSON.stringify(connection)}`
+    );
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getWokstationConnectionOperation(req, res, next) {
+  try {
+    res.send(
+      await WorkstationService.getWokstationConnectionOperation(
+        req.params.workstation_id
+      )
+    );
+    logger.info(
+      `GET - /workstation/connectToOperation/${req.params.workstation_id}`
+    );
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteWorkstationConnectionOperation(req, res, next) {
+  try {
+    await WorkstationService.deleteWorkstationConnectionOperation(
+      req.params.id
+    );
+    res.status(200).json({ msg: 'Operação realizada com sucesso!' });
+    logger.info(`DELETE - /workstation/connectToOperation/${req.params.id}`);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   createWorkstation,
   updateWorkstation,
   getWorkstations,
   getWorkstation,
   disableEnableWorkstation,
+  createConnectionWorkstationOperation,
+  getWokstationConnectionOperation,
+  deleteWorkstationConnectionOperation,
 };

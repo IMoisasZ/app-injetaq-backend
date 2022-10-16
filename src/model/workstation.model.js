@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import DBCONNECTION from '../connection/db.connection.js';
+import WorkstationConnectOperation from './workstationConnectOperation.model.js';
 
 const Workstation = DBCONNECTION.define(
   'workstation',

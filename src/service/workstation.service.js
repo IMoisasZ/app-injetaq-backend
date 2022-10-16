@@ -42,10 +42,42 @@ async function disableEnableWorkstation(id, actived) {
   }
 }
 
+// --------------------------connection to operation-----------------------------------
+async function createConnectionWorkstationOperation(connection) {
+  try {
+    return await WorkstationRepository.createConnectionWorkstationOperation(
+      connection
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getWokstationConnectionOperation(workstation_id) {
+  try {
+    return await WorkstationRepository.getWokstationConnectionOperation(
+      workstation_id
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deleteWorkstationConnectionOperation(id) {
+  try {
+    return await WorkstationRepository.deleteWorkstationConnectionOperation(id);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   createWorkstation,
   updateWorkstation,
   getWorkstations,
   getWorkstation,
   disableEnableWorkstation,
+  createConnectionWorkstationOperation,
+  getWokstationConnectionOperation,
+  deleteWorkstationConnectionOperation,
 };
