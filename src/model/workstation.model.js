@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
 import DBCONNECTION from '../connection/db.connection.js';
 
-const Machine = DBCONNECTION.define(
-  'machine',
+const Workstation = DBCONNECTION.define(
+  'workstation',
   {
     id: {
       type: Sequelize.INTEGER,
@@ -18,18 +18,14 @@ const Machine = DBCONNECTION.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
-    type: {
-      type: Sequelize.STRING,
-      defaultValue: 'padrao',
-    },
     actived: {
       type: Sequelize.BOOLEAN,
       defaultValue: true,
     },
   },
-  { tableName: 'machine' }
+  { tableName: 'workstation' }
 );
 
-Machine.sync();
+Workstation.sync();
 
-export default Machine;
+export default Workstation;
