@@ -39,14 +39,6 @@ async function updateUser(req, res, next) {
 			res.status(400).json({ error: 'O email deve ser informado!' })
 		if (!user.role)
 			res.status(400).json({ error: 'O tipo de perfil deve ser informado!' })
-		if (!user.password)
-			res.status(400).json({ error: 'A senha deve ser informada' })
-		if (!user.confirmPassword)
-			res
-				.status(400)
-				.json({ error: 'A confirmação da senha deve ser informada!' })
-
-		res.send(await UserService.updateUser(user))
 		logger.info(`PATCH - /user - ${JSON.stringify(user)}`)
 	} catch (error) {
 		next(error)
