@@ -25,7 +25,7 @@ async function updateUser(id, name, lastName, email, role, actived) {
 				},
 			}
 		)
-		return await getUser(user.id)
+		return await getUser(id)
 	} catch (error) {
 		throw error
 	}

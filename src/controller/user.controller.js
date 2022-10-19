@@ -32,13 +32,14 @@ async function updateUser(req, res, next) {
 	try {
 		const user = req.body
 		if (!user.name)
-			res.status(400).json({ error: 'O nome deve ser informado!' })
+			return res.status(400).json({ error: 'O nome deve ser informado!' })
 		if (!user.lastName)
-			res.status(400).json({ error: 'O sobrenome deve ser informado!' })
+			return res.status(400).json({ error: 'O sobrenome deve ser informado!' })
 		if (!user.email)
-			res.status(400).json({ error: 'O email deve ser informado!' })
+			return res.status(400).json({ error: 'O email deve ser informado!' })
 		if (!user.role)
-			res.status(400).json({ error: 'O tipo de perfil deve ser informado!' })
+			return res.status(400).json({ error: 'O tipo de perfil deve ser informado!' })
+		res.send(await UserService.updateUser(user))
 		logger.info(`PATCH - /user - ${JSON.stringify(user)}`)
 	} catch (error) {
 		next(error)
@@ -48,11 +49,12 @@ async function updateUser(req, res, next) {
 async function updateChangePasswordUser(req, res, next) {
 	try {
 		const { email, password, confirmPassword } = req.body
-		if (!email) res.status(400).json({ error: 'O email deve ser informado!' })
+		
+		if (!email) return res.status(400).json({ error: 'O email deve ser informado!' })
 		if (!password)
-			res.status(400).json({ error: 'A senha deve ser infromada!' })
+			return res.status(400).json({ error: 'A senha deve ser infromada!' })
 		if (!confirmPassword)
-			res
+			return res
 				.status(400)
 				.json({ error: 'A confrimação da senha deve ser informada!' })
 
