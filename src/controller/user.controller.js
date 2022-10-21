@@ -31,6 +31,7 @@ async function createUser(req, res, next) {
 async function updateUser(req, res, next) {
 	try {
 		const user = req.body
+		console.log(user);
 		if (!user.name)
 			return res.status(400).json({ error: 'O nome deve ser informado!' })
 		if (!user.lastName)

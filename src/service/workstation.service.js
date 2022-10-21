@@ -54,6 +54,7 @@ async function createConnectionWorkstationOperation(connection) {
 }
 
 async function getWokstationConnectionOperation(workstation_id) {
+  console.log(workstation_id);
   try {
     return await WorkstationRepository.getWokstationConnectionOperation(
       workstation_id

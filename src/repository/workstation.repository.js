@@ -75,16 +75,14 @@ async function getWokstationConnectionOperation(workstation_id) {
   try {
     return await WorkstationConnectionOperationModel.findAll(
       {
+        where: {
+          workstation_id,
+        },
         include: [
           {
             model: OperationModel,
           },
         ],
-      },
-      {
-        where: {
-          workstation_id,
-        },
       }
     );
   } catch (error) {

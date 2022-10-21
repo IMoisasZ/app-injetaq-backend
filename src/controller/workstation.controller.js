@@ -62,6 +62,7 @@ async function disableEnableWorkstation(req, res, next) {
 async function createConnectionWorkstationOperation(req, res, next) {
   try {
     const connection = req.body;
+    console.log(connection);
     if (!connection.workstation_id)
       res.status(400).json({ error: 'O posto deve ser informado!' });
     if (!connection.operation_id)
