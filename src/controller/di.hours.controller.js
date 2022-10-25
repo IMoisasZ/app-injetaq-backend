@@ -3,13 +3,12 @@ import DIHoursService from '../service/di.hours.service.js'
 async function includeDIHours(req, res, next) {
 	try {
 		const di_hours = req.body
-		console.debug('controller', di_hours)
 		if (!di_hours.operation_id)
-			res.status(400).json({ error: 'A operação deve ser informada!' })
+			return res.status(400).json({ error: 'A operação deve ser informada!' })
 		if (!di_hours.quantity)
-			res.status(400).json({ error: 'A qanitdade deve ser informada!' })
+			return res.status(400).json({ error: 'A qanitdade deve ser informada!' })
 		if (!di_hours.price)
-			res.status(400).json({ error: 'O preço deve ser informado!' })
+			return res.status(400).json({ error: 'O preço deve ser informado!' })
 		res.send(await DIHoursService.includeDIHours(di_hours))
 		logger.info(`POST - /di_hours - ${JSON.stringify(di_hours)}`)
 	} catch (error) {
@@ -23,7 +22,7 @@ async function updateDIHours(req, res, next) {
 		if (!di_hours.operation_id)
 			res.status(400).json({ error: 'A operação deve ser informada!' })
 		if (!di_hours.quantity)
-			res.status(400).json({ error: 'A qanitdade deve ser informada!' })
+			res.status(400).json({ error: 'A quanitdade deve ser informada!' })
 		if (!di_hours.price)
 			res.status(400).json({ error: 'O preço deve ser informado!' })
 		res.send(await DIHoursService.updateDIHours(di_hours))
