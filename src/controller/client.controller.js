@@ -5,6 +5,7 @@ async function createClient(req, res, next) {
 		const client = req.body
 		if (!client.description)
 			return res.status(400).json({ error: 'O cliente deve ser informado!' })
+		
 		res.send(await ClientService.createClient(client))
 		logger.info(`POST - /client - ${JSON.stringify(client)}`)
 	} catch (error) {
