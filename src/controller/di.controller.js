@@ -3,8 +3,7 @@ import DIService from '../service/di.service.js'
 async function createDI(req, res, next) {
 	try {
 		const di = req.body
-		console.log(di);
-		// if (!di.di) res.status(400).json({ error: 'A DI deve ser informada!' })
+
 		if (!di.client_id)
 			res.status(400).json({ error: 'O cliente deve ser informado!' })
 		res.send(await DIService.createDI(di))
