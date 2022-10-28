@@ -34,4 +34,4 @@ export default DIHours
 
 DIHours.sync()
 
-DIHours.belongsTo(OperationModel, { foreignKey: 'operation_id' })
+DIHours.belongsTo(OperationModel, { foreignKey: 'operation_id', onUpdate: 'CASCADE', onDelete: 'CASCADE' })

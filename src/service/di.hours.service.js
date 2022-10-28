@@ -1,4 +1,4 @@
-import DIHoursRepository from '../repository/di.hours.repsitory.js'
+import DIHoursRepository from '../repository/di.hours.repository.js'
 
 async function includeDIHours(di_hours) {
 	try {
@@ -26,6 +26,22 @@ async function getAllDIHours(di_id) {
 	}
 }
 
+async function sumByHours(di_id) {
+	try {
+		return await DIHoursRepository.sumByHours(di_id)
+	} catch (error) {
+		throw error
+	}
+}
+
+async function sumTotal(di_id) {
+	try {
+		return await DIHoursRepository.sumTotal(di_id)
+	} catch (error) {
+		throw error
+	}
+}
+
 async function getDIHours(id) {
 	try {
 		return await DIHoursRepository.getDIHours(id)
@@ -46,6 +62,8 @@ export default {
 	includeDIHours,
 	updateDIHours,
 	getAllDIHours,
+	sumByHours,
+	sumTotal,
 	getDIHours,
 	deleteDIHours,
 }

@@ -1,6 +1,6 @@
 import DIHoursModel from '../model/di.hours.model.js'
 import OperationModel from '../model/operation.model.js'
-
+import sequelize from 'sequelize'
 
 async function includeDIHours(di_hours) {
 	console.debug('repository', di_hours)
@@ -43,6 +43,39 @@ async function getAllDIHours(di_id) {
 	}
 }
 
+async function sumByHours(di_id) {
+	const totalHours = await DIHoursModel.findAll({
+		where: {
+			di_id,
+		},
+		include:[
+			{
+				model: OperationModel
+			}
+		],
+		attributes: [
+			'di_id',
+			'operation_id',
+			[sequelize.fn('sum', sequelize.col('quantity')), 'total_operation'],
+		],
+		group:['operation_id']
+	})
+	return totalHours
+}
+
+async function sumTotal(di_id) {
+	const total = await DIHoursModel.findAll({
+		where: {
+			di_id,
+		},
+		attributes: [
+			'di_id',
+			[sequelize.fn('sum', sequelize.col('quantity')), 'total_hours'],
+		],
+	})
+	return total
+}
+
 async function getDIHours(id) {
 	try {
 		return await DIHoursModel.findByPk(id, {
@@ -74,6 +107,8 @@ export default {
 	includeDIHours,
 	updateDIHours,
 	getAllDIHours,
+	sumByHours,
+	sumTotal,
 	getDIHours,
 	deleteDIHours,
 }
