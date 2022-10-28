@@ -1,9 +1,10 @@
 import DIModel from '../model/di.model.js'
 import ClientModel from '../model/client.model.js'
 import DIHoursModel from '../model/di.hours.model.js'
-import DIMaterial from '../model/di.material.model.js'
+import DIMaterialModel from '../model/di.material.model.js'
 import OperationModel from '../model/operation.model.js'
 import MaterialModel from '../model/material.model.js'
+import sequelize from 'sequelize'
 
 async function createDI(di) {
 	try {
@@ -12,6 +13,19 @@ async function createDI(di) {
 	} catch (error) {
 		throw error
 	}
+}
+
+async function lastDI(){
+	try {
+		const nextDi = await DIModel.findAll({
+			attributes: [
+			[sequelize.fn('max', sequelize.col('di')),'di'] 
+		]})
+		return nextDi[0].di + 1
+	} catch (error) {
+		throw error
+	}
+
 }
 
 async function updateDI(di) {
@@ -43,7 +57,7 @@ async function getAllDI() {
 					],
 				},
 				{
-					model: DIMaterial,
+					model: DIMaterialModel,
 					include: [
 						{
 							model: MaterialModel,
@@ -51,6 +65,9 @@ async function getAllDI() {
 					],
 				},
 			],
+			order: [
+				['di','DESC']
+			]
 		})
 	} catch (error) {
 		throw error
@@ -73,7 +90,7 @@ async function getDI(id) {
 					],
 				},
 				{
-					model: DIMaterial,
+					model: DIMaterialModel,
 					include: [
 						{
 							model: MaterialModel,
@@ -107,6 +124,7 @@ async function changeStatusDI(id, status) {
 
 export default {
 	createDI,
+	lastDI,
 	updateDI,
 	getAllDI,
 	getDI,

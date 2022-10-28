@@ -3,6 +3,7 @@ import DBCONNECTION from '../connection/db.connection.js'
 import DIHoursModel from './di.hours.model.js'
 import DIMaterial from './di.material.model.js'
 import ClientModel from './client.model.js'
+import UserModel from './user.model.js'
 
 const DI = DBCONNECTION.define(
 	'di',
@@ -62,6 +63,10 @@ const DI = DBCONNECTION.define(
 			allowNull: false,
 			defaultValue: 'PENDENTE',
 		},
+		user_id: {
+			type: Sequelize.INTEGER,
+			allowNull: false
+		}
 	},
 	{ tableName: 'di' },
 )
@@ -70,6 +75,7 @@ export default DI
 
 DI.sync()
 
-DI.belongsTo(ClientModel, { foreignKey: 'client_id' })
-DI.hasMany(DIHoursModel, { foreignKey: 'di_id' })
-DI.hasMany(DIMaterial, { foreignKey: 'di_id' })
+DI.belongsTo(ClientModel, { foreignKey: 'client_id', onUpdate: 'CASCADE', onDelete: 'CASCADE' })
+DI.belongsTo(UserModel, {foreignKey: 'user_id', onUpdate: 'CASCADE', onDelete: 'CASCADE'})
+DI.hasMany(DIHoursModel, { foreignKey: 'di_id', onUpdate: 'CASCADE', onDelete: 'CASCADE' })
+DI.hasMany(DIMaterial, { foreignKey: 'di_id', onUpdate: 'CASCADE', onDelete: 'CASCADE'})
