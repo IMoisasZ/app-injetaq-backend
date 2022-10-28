@@ -48,6 +48,8 @@ async function getDI(req, res, next) {
 async function changeStatusDI(req, res, next) {
 	try {
 		const { id, status } = req.body
+		if(!id) return res.status(400).json({error: 'A DI deve ser informada!'})
+		if(!status) return res.status(400).json({error: 'O status deve ser informado!'})
 		res.send(await DIService.changeStatusDI(id, status))
 		logger.info(`PUT /di - ${JSON.stringify(req.body)}`)
 	} catch (error) {
