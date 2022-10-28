@@ -34,6 +34,14 @@ async function sumByMaterial(di_id) {
 	}
 }
 
+async function sumTotal(di_id) {
+	try {
+		return await DIMaterialRepository.sumTotal(di_id)
+	} catch (error) {
+		throw error
+	}
+}
+
 async function getDIMaterial(id) {
 	try {
 		return await DIMaterialRepository.getDIMaterial(id)
@@ -56,5 +64,6 @@ export default {
 	getAllDIMaterial,
 	getDIMaterial,
 	sumByMaterial,
+	sumTotal,
 	deleteDIMaterial,
 }

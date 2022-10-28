@@ -47,6 +47,15 @@ async function sumByMaterial(req, res, next) {
 	}
 }
 
+async function sumTotal(req, res, next) {
+	try {
+		res.send(await DIMaterialService.sumTotal(req.params.di_id))
+		logger.info(`GET - /di_Material/sum${JSON.stringify(req.params.di_id)}`)
+	} catch (error) {
+		next(error)
+	}
+}
+
 async function getDIMaterial(req, res, next) {
 	try {
 		res.send(await DIMaterialService.getDIMaterial(req.params.id))
@@ -71,6 +80,7 @@ export default {
 	updateDIMaterial,
 	getAllDIMaterial,
 	sumByMaterial,
+	sumTotal,
 	getDIMaterial,
 	deleteDIMaterial,
 }

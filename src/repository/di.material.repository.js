@@ -61,6 +61,19 @@ async function sumByMaterial(di_id) {
 	return totalMaterial
 }
 
+async function sumTotal(di_id) {
+	const total = await DIMaterialModel.findAll({
+		where: {
+			di_id,
+		},
+		attributes: [
+			'di_id',
+			[sequelize.fn('sum', sequelize.col('total')), 'total_material'],
+		],
+	})
+	return total
+}
+
 async function getDIMaterial(id) {
 	try {
 		return await DIMaterialModel.findByPk(id, {
@@ -94,5 +107,6 @@ export default {
 	getAllDIMaterial,
 	getDIMaterial,
 	sumByMaterial,
+	sumTotal,
 	deleteDIMaterial,
 }
