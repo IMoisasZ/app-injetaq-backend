@@ -3,9 +3,10 @@ import CommentDIService from '../service/commentDi.service.js'
 async function createCommentDi(req, res, next){
     try {
         const commentDI = req.body
+
         if(!commentDI.di_id) return res.status(400).json({error: 'A DI deve ser informada!'})
         if(!commentDI.date) return res.send(400).json({error: 'A data deve ser informada!'})
-        if(!commentDI.commentDI) return res.status(400).json({error: 'O comnetario deve ser informado!'})
+        if(!commentDI.comment) return res.status(400).json({error: 'O comentario deve ser informado!'})
 
         res.send(await CommentDIService.createCommentDi(commentDI))
         logger.info(`POST - /comment_di - ${JSON.stringify(commentDI)}`)
@@ -19,7 +20,7 @@ async function updateCommentDi(req, res, next){
         const commentDI = req.body
         if(!commentDI.di_id) return res.status(400).json({error: 'A DI deve ser informada!'})
         if(!commentDI.date) return res.send(400).json({error: 'A data deve ser informada!'})
-        if(!commentDI.commentDI) return res.status(400).json({error: 'O comnetario deve ser informado!'})
+        if(!commentDI.comment) return res.status(400).json({error: 'O comentario deve ser informado!'})
 
         res.send(await CommentDIService.updateCommentDi(commentDI))
         logger.info(`PATCH - /comment_di - ${JSON.stringify(commentDI)}`)

@@ -1,5 +1,6 @@
 import CommentDIModel from '../model/commentDI.model.js'
 import DIModel from '../model/di.model.js'
+import UserModel from '../model/user.model.js'
 
 async function createCommentDi (commentDi) {
     try {
@@ -32,8 +33,14 @@ async function getAllCommentDi(di_id){
             include:[
                 {
                     model: DIModel
+                },
+                {
+                    model: UserModel
                 }
             ],
+            order: [
+				['id','DESC']
+			]
         })
     } catch (error) {
         throw error
