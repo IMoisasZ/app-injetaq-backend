@@ -15,6 +15,7 @@ import EmployeeRoute from './src/router/employee.route.js';
 import WorkstationRoute from './src/router/workstation.route.js';
 import AppointmentCodeRoute from './src/router/appointmentCode.route.js';
 import CommentDIRoute from './src/router/commentDi.router.js'
+import AppointmentHoursRoute from './src/router/appointmentHours.route.js'
 
 // create variable app
 const app = express();
@@ -50,6 +51,7 @@ app.use('/employee', EmployeeRoute);
 app.use('/workstation', WorkstationRoute);
 app.use('/appointmentCode', AppointmentCodeRoute);
 app.use('/comment_di', CommentDIRoute)
+app.use('/appointment_hours', AppointmentHoursRoute)
 
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format;
